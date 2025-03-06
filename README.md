@@ -76,7 +76,7 @@ git clone https://github.com/rinki-s/whut-latex-report-template.git
   - **更纱黑体 (Sarasa Mono SC)**：等宽中文字体，用于代码显示
   - **Courier Prime**：英文等宽字体，用于代码块
 
-> **💡 提示**：模板默认使用思源系列字体，这些是开源字体，提供了优秀的排版效果。如果需要与学校官方文档更接近的外观，可以考虑修改为华文宋体和华文黑体。
+> **💡 提示**：模板默认使用思源系列字体，这些是开源字体，提供了优秀的排版效果。如果需要与学校官方文档更接近的外观，可以考虑修改为 SimHei 和 SimSong（即 Windows 自带黑体和宋体），修改后请到 `styles.tex` 中取消注释 `\usepackage[BoldFont, SlantFont]{xeCJK}`。
 
 ### 字体安装指南
 
@@ -132,30 +132,23 @@ git clone https://github.com/rinki-s/whut-latex-report-template.git
 ### 图片插入
 
 ```latex
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[width=0.7\textwidth]{res/example-image.png}
-    \caption{图片说明}
-    \label{fig:example}
-\end{figure}
+\includegraphics[width=0.7\textwidth]{res/example-image.png}
+\captionof{figure}{图片说明}
 ```
 
 ### 表格创建
 
 ```latex
 % 普通表格
-\begin{table}[htbp]
-    \centering
-    \begin{tabular}{|c|c|c|}
-        \hline
-        列1 & 列2 & 列3 \\
-        \hline
-        数据1 & 数据2 & 数据3 \\
-        \hline
-    \end{tabular}
-    \caption{表格说明}
-    \label{tab:example}
-\end{table}
+\begin{tabular}{|c|c|c|}
+    \hline
+    列1 & 列2 & 列3 \\
+    \hline
+    数据1 & 数据2 & 数据3 \\
+    \hline
+\end{tabular}
+\captionof{table}{表格说明}
+
 
 % 推荐：使用 tabularray 创建更美观的表格
 \noindent\begin{tblr}{

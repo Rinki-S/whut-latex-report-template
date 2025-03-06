@@ -206,7 +206,7 @@ hello_world()
 
 ## 🖨️ 打印模式
 
-在 `settings.tex` 中取消注释 `\enableprintmode` 行以启用打印模式：
+在 `template.tex` 中取消注释 `\enableprintmode` 行以启用打印模式：
 
 ```latex
 \enableprintmode  % 启用打印模式

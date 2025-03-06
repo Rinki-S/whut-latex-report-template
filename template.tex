@@ -1,0 +1,98 @@
+% template.tex - 实验报告模板主文件
+\documentclass[a4paper]{article}
+
+% 加载设置和样式
+\input{settings.tex}
+\input{styles.tex}
+
+\begin{document}
+
+% 封面页
+\begin{tblr}{
+  colspec = {|c|c|c|p{2cm}|},
+  row{1} = {abovesep=0.2cm, belowsep=0.2cm},
+  hlines
+}
+  {\zihao{5}\sffamily\bfseries{学生学号}} & \studentid & {\zihao{5}\sffamily\bfseries{实验课成绩}} & \\
+\end{tblr}
+
+\begin{center}
+    {\zihao{1}\bfseries {学~生~实~验~报~告~书}} \\[0.28cm]
+    \includegraphics{res/image.png} 
+    
+    \vspace{5.6cm}
+    
+    \begin{tblr}{
+      colspec = {c Q[c,wd=6.655cm]},
+      rows = {abovesep=0.2cm, belowsep=0.2cm}
+    }
+      {\zihao{4}\bfseries 实验课程名称} & {\zihao{4}\tikzunderline{\coursename}} \\
+      {\zihao{4}\bfseries 开课学院} & {\zihao{4}\tikzunderline{\department}} \\
+      {\zihao{4}\bfseries 指导教师姓名} & {\zihao{4}\tikzunderline{\teachername}} \\
+      {\zihao{4}\bfseries 学生姓名} & {\zihao{4}\tikzunderline{\studentname}} \\
+      {\zihao{4}\bfseries 学生专业班级} & {\zihao{4}\tikzunderline{\studentclass}} \\
+    \end{tblr}
+
+  \vspace{4.48cm}
+
+  {\zihao{-3} \academicyearstart~~~~~~--~~~~~~\academicyearend~~~~~~}{\zihao{4}\sffamily 学年~~~~~~第~~~~~~\semester~~~~~~学期}
+\end{center}
+
+\pagebreak
+
+% 打印模式空白页
+\ifprintmode
+  \thispagestyle{empty}
+  \phantom{This page intentionally left blank.}
+  \clearpage
+\fi
+
+% 标题页
+{\zihao{-3}\sffamily {实验课程名称：}\underline{~~~~\coursename~~~~}} \\
+
+\vspace{-0.5cm}
+
+\begin{center}
+  \begin{tblr}{
+    width = \linewidth,
+    colspec = {|X[c,2]|X[c,1]|X[c,2]|X[c,2]|X[c,2]|X[c,2]|},
+    hspan = even,
+    rows = {abovesep=0.1cm, belowsep=0.1cm},
+    row{4} = {abovesep=0.28cm, belowsep=0.28cm},
+    hlines
+  }
+    {\tchstyle {实验项目名称}} & \SetCell[c=3]{c} {\tcstyle\experimentname} & & & {\tchstyle 报告成绩} & \\
+    {\tchstyle 实验者} & {\tcstyle \studentname} & {\tchstyle 专业班级} & {\tcstyle \studentclass} & {\tchstyle 组别} & {\tcstyle \groupnumber} \\
+    {\tchstyle {同组者}} & \SetCell[c=3]{c} {\tcstyle\teammates} & & & {\tchstyle 完成日期} & {\zihao{-5}\sffamily\spaceskip=-0.01em \completedate}
+  \end{tblr}
+\end{center}
+
+\vspace{-0.65\baselineskip}
+
+% 主内容框
+\begin{tcolorbox}[
+  height fill=true,
+  breakable=true,
+  height fixed for=all,
+  colback=white,
+  colframe=black, 
+  arc=0mm,
+  boxrule=0.4pt,
+  top=0mm,
+  bottom=0mm,
+  left=0mm,
+  right=0mm,
+  boxsep=5mm,
+  before skip=0pt,
+  after skip=0pt
+]
+  \setcounter{reportpart}{0}
+  \setlength{\parindent}{2\ccwd}
+  \setlist{nosep}
+  \zihao{5}
+  
+  % 加载报告内容
+  \input{content.tex}
+\end{tcolorbox}
+
+\end{document}

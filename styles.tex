@@ -1,0 +1,91 @@
+% styles.tex - 样式和格式定义
+\usepackage[fontset=none]{ctex}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage[left=3cm, right=3cm, top=2cm, bottom=1.5cm]{geometry}
+\usepackage{tabularray}
+\usepackage{setspace}
+\usepackage{calc}
+\usepackage{tikz}
+\usepackage{tcolorbox}
+\usepackage{enumitem}
+\usepackage[ruled, vlined]{algorithm2e}
+\usepackage{listings}
+\usepackage[dvipsnames]{xcolor}
+
+\tcbuselibrary{breakable}
+
+% 设置代码高亮
+\lstset{
+  basicstyle=\tt\small,
+  breaklines=true,
+  frame=single,
+  language=C++,
+  keywordstyle=\bfseries\color{NavyBlue},
+  columns=flexible,
+  numbers=left,
+  numbersep=-1.5em,
+  commentstyle=\itshape\color{gray},
+  stringstyle=\bfseries\color{PineGreen},
+  numberstyle=\footnotesize
+}
+
+% 算法环境本地化
+\renewcommand{\algorithmcfname}{算法}
+\SetKwInput{KwIn}{输入}
+\SetKwInput{KwOut}{输出}
+
+% 字体设置
+\setCJKmainfont{思源宋体 CN}
+\setCJKsansfont{思源黑体 CN}
+\setCJKmonofont{Sarasa Mono SC}
+\setmainfont{Times New Roman}
+\setsansfont{思源黑体 CN}
+\setmonofont{Courier Prime}
+
+% 通用样式命令
+\newcommand{\tcstyle}{\zihao{5}\sffamily}
+\newcommand{\tchstyle}{\zihao{5}\sffamily\bfseries}
+\newcommand{\blankline}{\vspace{\baselineskip}}
+\newcommand{\enableprintmode}{\printmodetrue}
+\newcommand{\disableprintmode}{\printmodefalse}
+
+% 标题命令
+\newcounter{reportpart}
+\newcommand{\hone}[1]{
+  \stepcounter{reportpart}
+  {\zihao{-3}\sffamily\bfseries\noindent 第\chinese{reportpart}部分：#1}\par
+  \vspace{0.5em}
+}
+
+\newcounter{reportsect}[reportpart]
+\newcommand{\htwo}[1]{
+  \stepcounter{reportsect}
+  {\zihao{4}\bfseries\noindent \chinese{reportsect}、~~#1}\par
+  \vspace{0.3em}
+}
+
+\newcounter{reportsubsect}[reportsect]
+\newcommand{\hthree}[1]{
+  \stepcounter{reportsubsect}
+  {\zihao{-4}\bfseries\noindent \arabic{reportsubsect}.~~#1}\par
+  \vspace{0.2em}
+}
+
+\newcounter{reportitem}[reportsubsect]
+\newcommand{\hfour}[1]{
+  \stepcounter{reportitem}
+  {\zihao{5}(\arabic{reportitem})~~#1}\par
+  \vspace{0.1em}
+}
+
+% 下划线命令
+\newcommand{\tikzunderline}[2][6.655cm]{%
+  \begingroup
+  \sbox0{\parbox[t]{#1}{\centering #2}}%
+  \begin{tikzpicture}[baseline=(X.base)]
+    \node[anchor=base,inner sep=0pt,outer sep=0pt,text width=#1,align=center] (X) {\usebox0};
+    \draw[thick] ([yshift=-7pt]X.south west) -- ([yshift=-7pt]X.south east);
+  \end{tikzpicture}%
+  \endgroup
+}
